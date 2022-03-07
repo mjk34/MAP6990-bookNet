@@ -53,7 +53,12 @@ class Markov:
                 if i == len(associations)-1: continue
 
                 word = associations[i]
-                for j in range(i+1, len(associations)):
+                # for j in range(i+1, len(associations)):
+                #     match = associations[j]
+                #     if word == match: continue
+                #     # print(f'[{word}, {match}]')
+                #     self.dictionary[word].append(match)
+                for j in range(len(associations)):
                     match = associations[j]
                     if word == match: continue
                     # print(f'[{word}, {match}]')
@@ -63,7 +68,7 @@ class Markov:
             suggested_matches = nltk.Counter(
                 self.dictionary[unique_array[i]]).most_common()
             match_size = len(suggested_matches)
-            print(f'\nWord: {unique_array[i]}')
+            print(f'\nWord: {unique_array[i]}', end=' ')
             print(f'Matches: {match_size}')
-            print('Top 5:')
+            print('Top 5: ', end='')
             print(suggested_matches[:5])
