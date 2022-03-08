@@ -10,13 +10,14 @@ def main (argv):
     with open('./training_txt/holmes.txt', 'rb') as f:
         holmes_content = f.read()
     markov.create_map(holmes_content)
-    end = time.time()
-    print('\nElapsed Time: %.3fs' % float(end-start))
     
     # with open('./training_txt/woman.txt', 'rb') as f:
     #     woman_content = f.read()
     # markov.create_map(woman_content)
-
+    
+    end = time.time()
+    print('\nElapsed Time: %.3fs' % float(end-start))
+    
     return
 
 if __name__ == '__main__':
