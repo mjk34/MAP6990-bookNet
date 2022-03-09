@@ -50,19 +50,18 @@ class Markov:
         for i in range(len(dict_keys)):
             suggested_matches = nltk.Counter(
                 self.dictionary[dict_keys[i]]).most_common()
-            print(len(suggested_matches))
+            # print(len(suggested_matches))
             
             for match in suggested_matches:
-                j = dict_keys.index(match[0])
-                print(f'Word: "{dict_keys[i]}" Match: "{match[0]}" Count: {match[1]}')
-                network_matrix[i][j] = match[1]
-                break #test
-            break
+                if match[0] in dict_keys:
+                    j = dict_keys.index(match[0])
+                    # print(f'Word: "{dict_keys[i]}" Match: "{match[0]}" Count: {match[1]}')
+                    network_matrix[i][j] = match[1]
         
-        for i in range(len(dict_keys)):
-            for j in range(len(dict_keys)):
-                if network_matrix[i][j] > 0:
-                    print(f'TEST: the word "{dict_keys[i]}" occurs {network_matrix[i][j]} times with the word "{dict_keys[j]}"')
+        # for i in range(len(dict_keys)):
+        #     for j in range(len(dict_keys)):
+                # if network_matrix[i][j] > 0:
+                    # print(f'TEST: the word "{dict_keys[i]}" occurs {network_matrix[i][j]} times with the word "{dict_keys[j]}"')
         
         # for i in range(10):
         #     suggested_matches = nltk.Counter(
