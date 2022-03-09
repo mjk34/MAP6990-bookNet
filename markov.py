@@ -22,7 +22,7 @@ class Markov:
 
         return reduce_split
 
-    def create_map (self, content):
+    def create_mat (self, content):
         tokenized_array = self._tokenizer(content)
         
         for sentence in tokenized_array:
@@ -57,17 +57,11 @@ class Markov:
                     j = dict_keys.index(match[0])
                     # print(f'Word: "{dict_keys[i]}" Match: "{match[0]}" Count: {match[1]}')
                     network_matrix[i][j] = match[1]
+
+
+        return network_matrix
         
         # for i in range(len(dict_keys)):
         #     for j in range(len(dict_keys)):
                 # if network_matrix[i][j] > 0:
                     # print(f'TEST: the word "{dict_keys[i]}" occurs {network_matrix[i][j]} times with the word "{dict_keys[j]}"')
-        
-        # for i in range(10):
-        #     suggested_matches = nltk.Counter(
-        #         self.dictionary[dict_keys[i]]).most_common()
-        #     match_size = len(suggested_matches)
-        #     print(f'\nWord: {dict_keys[i]}', end=' ')
-        #     print(f'Matches: {match_size}')
-        #     print('Top 5: ', end='')
-        #     print(suggested_matches[:5])
