@@ -35,9 +35,8 @@ class Markov:
                if (regex.match('[A-Za-z]*', word)).group() == '': continue
                else: associations.append(word)
 
+            if len(associations) == 1: continue
             for i in range(len(associations)):
-                #if i == len(associations)-1: continue
-
                 word = associations[i]
                 for j in range(len(associations)):
                     match = associations[j]
