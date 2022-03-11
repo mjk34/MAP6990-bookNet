@@ -22,6 +22,9 @@ class Markov:
 
         return reduce_split
 
+    def get_word_list(self):
+        return list(self.dictionary.keys())
+
     def create_mat (self, content):
         tokenized_array = self._tokenizer(content)
         
@@ -31,17 +34,16 @@ class Markov:
             for word in sen_split:
                if (regex.match('[A-Za-z]*', word)).group() == '': continue
                else: associations.append(word)
-            
-            for i in range(len(associations)):
-                if i == len(associations)-1: continue
 
+            if len(associations) == 1: continue
+            for i in range(len(associations)):
                 word = associations[i]
                 for j in range(len(associations)):
                     match = associations[j]
                     if word == match: continue
                     # print(f'[{word}, {match}]')
                     self.dictionary[word].append(match)
-    
+
         dict_keys = list(self.dictionary.keys())
         dict_keys.sort()
         print(f'\nTotal unique dict: {len(dict_keys)}')
